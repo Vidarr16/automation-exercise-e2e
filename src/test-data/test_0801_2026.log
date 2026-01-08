@@ -1,0 +1,24 @@
+[2026-01-08T12:26:06.486Z] Starting Test: Navigating to Homepage.
+[2026-01-08T12:26:10.102Z] Step 3 & 4: Login process.
+[2026-01-08T12:26:10.104Z] Starting Action: Navigate to Login Page
+[2026-01-08T12:26:10.106Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:26:40.177Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T12:26:50.181Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('a[href="/login"]')[22m
+[2m    - waiting for" https://automationexercise.com/login" navigation to finish...[22m
+
+[2026-01-08T12:26:57.113Z] Action Completed: Navigate to Login Page
+[2026-01-08T12:26:57.115Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T12:26:57.144Z] Starting Action: Click Login Button
+[2026-01-08T12:26:57.145Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:27:06.608Z] Action Completed: Click Login Button
+[2026-01-08T12:27:06.632Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T12:27:06.634Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T12:27:06.636Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:27:07.379Z] Action Completed: Filter by Brand: POLO
+[2026-01-08T12:27:07.381Z] Getting details for product: Soft Stretch Jeans
+[2026-01-08T12:27:07.392Z] Recorded Product 1: {"name":"Soft Stretch Jeans","price":"Rs. 799"}
+[2026-01-08T12:27:07.397Z] Starting Action: Add to Cart: Soft Stretch Jeans
+[2026-01-08T12:27:07.403Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:27:37.462Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...

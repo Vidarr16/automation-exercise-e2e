@@ -1,0 +1,40 @@
+[2026-01-08T12:29:30.532Z] Starting Test: Navigating to Homepage.
+[2026-01-08T12:29:31.962Z] Step 3 & 4: Login process.
+[2026-01-08T12:29:31.964Z] Starting Action: Navigate to Login Page
+[2026-01-08T12:29:31.966Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:29:32.758Z] Action Completed: Navigate to Login Page
+[2026-01-08T12:29:32.760Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T12:29:32.784Z] Starting Action: Click Login Button
+[2026-01-08T12:29:32.787Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:29:36.398Z] Action Completed: Click Login Button
+[2026-01-08T12:29:36.419Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T12:29:36.421Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T12:29:36.422Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:30:06.546Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T12:30:16.554Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('a[href="/brand_products/Polo"]')[22m
+[2m    - locator resolved to <a href="/brand_products/Polo">…</a>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <iframe width="" height="" vspace="0" hspace="0" tabindex="0" id="aswift_3" scrolling="no" name="aswift_3" frameborder="0" marginwidth="0" marginheight="0" title="Advertisement" allowtransparency="true" data-load-complete="true" aria-label="Advertisement" data-google-container-id="a!4" allow="attribution-reporting; run-ad-auction" data-google-query-id="CO74hv34-5EDFZiVZgIda0Mb4w" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-us…></iframe> from <ins tabindex="0" aria-hidden="false" data-ad-status="filled" data-vignette-loaded="true" data-adsbygoogle-status="done" class="adsbygoogle adsbygoogle-noablate">…</ins> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <iframe width="" height="" vspace="0" hspace="0" tabindex="0" id="aswift_3" scrolling="no" name="aswift_3" frameborder="0" marginwidth="0" marginheight="0" title="Advertisement" allowtransparency="true" data-load-complete="true" aria-label="Advertisement" data-google-container-id="a!4" allow="attribution-reporting; run-ad-auction" data-google-query-id="CO74hv34-5EDFZiVZgIda0Mb4w" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-us…></iframe> from <ins tabindex="0" aria-hidden="false" data-ad-status="filled" data-vignette-loaded="true" data-adsbygoogle-status="done" class="adsbygoogle adsbygoogle-noablate">…</ins> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    19 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is visible, enabled and stable[22m
+[2m       - scrolling into view if needed[22m
+[2m       - done scrolling[22m
+[2m       - <iframe width="" height="" vspace="0" hspace="0" tabindex="0" id="aswift_3" scrolling="no" name="aswift_3" frameborder="0" marginwidth="0" marginheight="0" title="Advertisement" allowtransparency="true" data-load-complete="true" aria-label="Advertisement" data-google-container-id="a!4" allow="attribution-reporting; run-ad-auction" data-google-query-id="CO74hv34-5EDFZiVZgIda0Mb4w" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-us…></iframe> from <ins tabindex="0" aria-hidden="false" data-ad-status="filled" data-vignette-loaded="true" data-adsbygoogle-status="done" class="adsbygoogle adsbygoogle-noablate">…</ins> subtree intercepts pointer events[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+

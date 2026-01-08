@@ -1,0 +1,33 @@
+[2026-01-08T13:10:19.161Z] Starting Test: Navigating to Homepage.
+[2026-01-08T13:10:23.771Z] Step 3 & 4: Login process.
+[2026-01-08T13:10:23.773Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T13:10:31.324Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T13:10:31.358Z] Starting Action: Click Login Button
+[2026-01-08T13:10:31.360Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T13:10:41.368Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T13:10:51.374Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-qa="login-button"]')[22m
+
+[2026-01-08T13:10:51.388Z] Action Completed: Click Login Button
+[2026-01-08T13:10:51.401Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T13:10:51.403Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T13:10:51.405Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T13:10:58.725Z] Action Completed: Filter by Brand: POLO
+[2026-01-08T13:10:58.727Z] Getting details for product: Soft Stretch Jeans
+[2026-01-08T13:10:58.747Z] Recorded Product 1: {"name":"Soft Stretch Jeans","price":"Rs. 799"}
+[2026-01-08T13:10:58.751Z] Starting Action: Add to Cart: Soft Stretch Jeans
+[2026-01-08T13:10:58.753Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T13:11:20.306Z] Action Completed: Add to Cart: Soft Stretch Jeans
+[2026-01-08T13:11:20.308Z] Starting Action: Click Continue Shopping
+[2026-01-08T13:11:20.310Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T13:11:20.328Z] Action Completed: Click Continue Shopping
+[2026-01-08T13:11:20.330Z] Step 6: Verify Cart.
+[2026-01-08T13:11:20.331Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T13:11:20.333Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T13:11:30.338Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T13:11:40.344Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('.shop-menu a[href="/view_cart"]')[22m
+[2m    - waiting for" https://automationexercise.com/view_cart" navigation to finish...[22m
+

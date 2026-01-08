@@ -1,0 +1,83 @@
+[2026-01-08T14:34:00.372Z] Starting Test: Navigating to Homepage.
+[2026-01-08T14:34:03.309Z] Step 3 & 4: Login process.
+[2026-01-08T14:34:03.312Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T14:34:07.026Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T14:34:07.075Z] Starting Action: Click Login Button
+[2026-01-08T14:34:07.076Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:34:17.081Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T14:34:27.088Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-qa="login-button"]')[22m
+
+[2026-01-08T14:35:17.400Z] Action Completed: Click Login Button
+[2026-01-08T14:35:17.411Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T14:35:17.413Z] Attempt 1 (Timeout: 45000ms)...
+[2026-01-08T14:35:27.417Z] Attempt 1 failed. Retrying with longer timeout (90000ms)...
+[2026-01-08T14:35:37.421Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('.shop-menu a[href="/view_cart"]')[22m
+
+[2026-01-08T14:35:59.775Z] Action Completed: Clicking "Cart" navigation
+[2026-01-08T14:35:59.777Z] Clearing cart...
+[2026-01-08T14:35:59.786Z] Cart cleared.
+[2026-01-08T14:36:06.427Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T14:36:06.429Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T14:36:06.431Z] Attempt 1 (Timeout: 60000ms)...
+[2026-01-08T14:36:07.272Z] Action Completed: Filter by Brand: POLO
+[2026-01-08T14:36:07.275Z] Getting details for product: Soft Stretch Jeans
+[2026-01-08T14:36:07.282Z] Recorded Product 1: {"name":"Soft Stretch Jeans","price":"Rs. 799"}
+[2026-01-08T14:36:07.287Z] Starting Action: Add to Cart: Soft Stretch Jeans
+[2026-01-08T14:36:07.288Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:36:37.310Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T14:36:38.647Z] Action Completed: Add to Cart: Soft Stretch Jeans
+[2026-01-08T14:36:38.648Z] Starting Action: Click Continue Shopping
+[2026-01-08T14:36:38.650Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:36:38.669Z] Action Completed: Click Continue Shopping
+[2026-01-08T14:36:38.671Z] Step 6: Verify Cart.
+[2026-01-08T14:36:38.672Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T14:36:38.673Z] Attempt 1 (Timeout: 45000ms)...
+[2026-01-08T14:36:39.371Z] Action Completed: Clicking "Cart" navigation
+[2026-01-08T14:36:39.373Z] Verifying cart items against expected products.
+[2026-01-08T14:36:39.375Z] Retrieving all items from the cart.
+[2026-01-08T14:36:39.391Z] Verifying item 1: Soft Stretch Jeans
+[2026-01-08T14:36:39.395Z] Step 7: Go back and verify brand page.
+[2026-01-08T14:36:50.506Z] Verifying Brand Page for: POLO
+[2026-01-08T14:36:50.522Z] Step 8: Filter MAST & HARBOUR and view product.
+[2026-01-08T14:36:50.524Z] Starting Action: Filter by Brand: MAST & HARBOUR
+[2026-01-08T14:36:50.525Z] Attempt 1 (Timeout: 60000ms)...
+[2026-01-08T14:36:51.271Z] Action Completed: Filter by Brand: MAST & HARBOUR
+[2026-01-08T14:36:51.273Z] Getting details for product: GRAPHIC DESIGN MEN
+[2026-01-08T14:36:51.278Z] Recorded Product 2: {"name":"GRAPHIC DESIGN MEN","price":"Rs. 1389"}
+[2026-01-08T14:36:51.284Z] Starting Action: View Product: GRAPHIC DESIGN MEN
+[2026-01-08T14:36:51.286Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:36:52.051Z] Action Completed: View Product: GRAPHIC DESIGN MEN
+[2026-01-08T14:36:52.053Z] Step 9: Verify details on product page and add to cart.
+[2026-01-08T14:36:52.102Z] Product details verified on Details Page.
+[2026-01-08T14:36:52.997Z] Added second product to cart.
+[2026-01-08T14:36:54.613Z] Verifying both items in cart.
+[2026-01-08T14:36:54.616Z] Verifying cart items against expected products.
+[2026-01-08T14:36:54.619Z] Retrieving all items from the cart.
+[2026-01-08T14:36:54.647Z] Verifying item 1: Soft Stretch Jeans
+[2026-01-08T14:36:54.650Z] Verifying item 2: GRAPHIC DESIGN MEN
+[2026-01-08T14:36:54.653Z] Step 10: Remove first item.
+[2026-01-08T14:36:54.667Z] Starting Action: Remove first item
+[2026-01-08T14:36:54.670Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:36:55.609Z] Action Completed: Remove first item
+[2026-01-08T14:36:55.611Z] Verifying cart items against expected products.
+[2026-01-08T14:36:55.613Z] Retrieving all items from the cart.
+[2026-01-08T14:36:55.625Z] Verifying item 1: GRAPHIC DESIGN MEN
+[2026-01-08T14:36:55.628Z] Step 11: Proceed to Checkout.
+[2026-01-08T14:36:55.629Z] Starting Action: Proceed to Checkout
+[2026-01-08T14:36:55.630Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:37:01.851Z] Action Completed: Proceed to Checkout
+[2026-01-08T14:37:01.854Z] Starting Action: Place Order
+[2026-01-08T14:37:01.856Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:37:03.635Z] Action Completed: Place Order
+[2026-01-08T14:37:03.637Z] Filling payment details for YYY.
+[2026-01-08T14:37:03.701Z] Starting Action: Pay and Confirm
+[2026-01-08T14:37:03.703Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:37:05.723Z] Action Completed: Pay and Confirm
+[2026-01-08T14:37:05.725Z] Starting Action: Continue to Home
+[2026-01-08T14:37:05.727Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:37:19.783Z] Action Completed: Continue to Home
+[2026-01-08T14:37:19.787Z] Test Completed Successfully.

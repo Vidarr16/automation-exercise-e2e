@@ -1,0 +1,14 @@
+[2026-01-08T15:26:36.736Z] Starting Test: Navigating to Homepage.
+[2026-01-08T15:26:40.494Z] Step 3 & 4: Login process.
+[2026-01-08T15:26:40.496Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T15:28:18.371Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T15:28:18.406Z] Starting Action: Click Login Button
+[2026-01-08T15:28:18.408Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T15:28:24.622Z] Action Completed: Click Login Button
+[2026-01-08T15:28:24.668Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T15:28:24.671Z] Attempt 1 (Timeout: 45000ms)...
+[2026-01-08T15:28:34.677Z] Attempt 1 failed. Retrying with longer timeout (90000ms)...
+[2026-01-08T15:28:44.683Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('.shop-menu a[href="/view_cart"]')[22m
+

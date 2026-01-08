@@ -1,0 +1,25 @@
+[2026-01-08T14:04:53.935Z] Starting Test: Navigating to Homepage.
+[2026-01-08T14:04:54.866Z] Step 3 & 4: Login process.
+[2026-01-08T14:04:54.868Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T14:04:55.917Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T14:04:55.972Z] Starting Action: Click Login Button
+[2026-01-08T14:04:55.974Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:04:56.767Z] Action Completed: Click Login Button
+[2026-01-08T14:04:56.789Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T14:04:56.791Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T14:04:56.793Z] Attempt 1 (Timeout: 45000ms)...
+[2026-01-08T14:04:57.325Z] Action Completed: Filter by Brand: POLO
+[2026-01-08T14:04:57.327Z] Getting details for product: Soft Stretch Jeans
+[2026-01-08T14:04:57.334Z] Recorded Product 1: {"name":"Soft Stretch Jeans","price":"Rs. 799"}
+[2026-01-08T14:04:57.337Z] Starting Action: Add to Cart: Soft Stretch Jeans
+[2026-01-08T14:04:57.339Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:04:57.693Z] Action Completed: Add to Cart: Soft Stretch Jeans
+[2026-01-08T14:04:57.695Z] Starting Action: Click Continue Shopping
+[2026-01-08T14:04:57.697Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:04:57.716Z] Action Completed: Click Continue Shopping
+[2026-01-08T14:04:57.717Z] Step 6: Verify Cart.
+[2026-01-08T14:04:57.719Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T14:04:57.721Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:04:58.039Z] Action Completed: Clicking "Cart" navigation
+[2026-01-08T14:04:58.042Z] Verifying cart items against expected products.
+[2026-01-08T14:04:58.043Z] Retrieving all items from the cart.

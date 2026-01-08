@@ -1,0 +1,11 @@
+[2026-01-08T15:09:45.856Z] Starting Test: Navigating to Homepage.
+[2026-01-08T15:09:52.450Z] Step 3 & 4: Login process.
+[2026-01-08T15:09:52.453Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T15:12:08.031Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T15:12:08.074Z] Starting Action: Click Login Button
+[2026-01-08T15:12:08.076Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T15:12:18.082Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T15:12:28.088Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-qa="login-button"]')[22m
+

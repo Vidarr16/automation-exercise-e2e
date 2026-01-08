@@ -1,0 +1,41 @@
+[2026-01-08T12:21:29.801Z] Starting Test: Navigating to Homepage.
+[2026-01-08T12:21:30.666Z] Step 3 & 4: Login process.
+[2026-01-08T12:21:30.669Z] Starting Action: Navigate to Login Page
+[2026-01-08T12:21:30.672Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:21:31.752Z] Action Completed: Navigate to Login Page
+[2026-01-08T12:21:31.753Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T12:21:31.779Z] Starting Action: Click Login Button
+[2026-01-08T12:21:31.782Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:21:34.079Z] Action Completed: Click Login Button
+[2026-01-08T12:21:34.100Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T12:21:34.102Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T12:21:34.104Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:22:04.160Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T12:22:14.168Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('a[href="/brand_products/Polo"]')[22m
+[2m    - waiting for" https://automationexercise.com/brand_products/Polo" navigation to finish...[22m
+
+[2026-01-08T12:22:48.644Z] Action Completed: Filter by Brand: POLO
+[2026-01-08T12:22:48.645Z] Getting details for product: Soft Stretch Jeans
+[2026-01-08T12:22:48.653Z] Recorded Product 1: {"name":"Soft Stretch Jeans","price":"Rs. 799"}
+[2026-01-08T12:22:48.658Z] Starting Action: Add to Cart: Soft Stretch Jeans
+[2026-01-08T12:22:48.659Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:22:52.029Z] Action Completed: Add to Cart: Soft Stretch Jeans
+[2026-01-08T12:22:52.031Z] Starting Action: Click Continue Shopping
+[2026-01-08T12:22:52.033Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:22:52.085Z] Action Completed: Click Continue Shopping
+[2026-01-08T12:22:52.087Z] Step 6: Verify Cart.
+[2026-01-08T12:22:52.088Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T12:22:52.090Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:22:53.579Z] Action Completed: Clicking "Cart" navigation
+[2026-01-08T12:22:53.582Z] Verifying cart items against expected products.
+[2026-01-08T12:22:53.583Z] Retrieving all items from the cart.
+[2026-01-08T12:22:53.621Z] Verifying item 1: Soft Stretch Jeans
+[2026-01-08T12:22:53.625Z] Step 7: Go back and verify brand page.
+[2026-01-08T12:22:55.133Z] Verifying Brand Page for: POLO
+[2026-01-08T12:22:55.148Z] Step 8: Filter MAST & HARBOUR and view product.
+[2026-01-08T12:22:55.150Z] Starting Action: Filter by Brand: MAST & HARBOUR
+[2026-01-08T12:22:55.151Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:22:56.086Z] Action Completed: Filter by Brand: MAST & HARBOUR
+[2026-01-08T12:22:56.088Z] Getting details for product: GRAPHIC DESIGN MEN T-SHIRT - BLUE

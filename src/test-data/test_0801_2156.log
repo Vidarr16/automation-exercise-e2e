@@ -1,0 +1,15 @@
+[2026-01-08T13:56:36.361Z] Starting Test: Navigating to Homepage.
+[2026-01-08T13:57:25.128Z] Step 3 & 4: Login process.
+[2026-01-08T13:57:25.130Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T13:57:27.670Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T13:57:27.698Z] Starting Action: Click Login Button
+[2026-01-08T13:57:27.700Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T13:57:29.310Z] Action Completed: Click Login Button
+[2026-01-08T13:57:29.367Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T13:57:29.372Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T13:57:29.375Z] Attempt 1 (Timeout: 45000ms)...
+[2026-01-08T13:57:39.384Z] Attempt 1 failed. Retrying with longer timeout (90000ms)...
+[2026-01-08T13:57:49.388Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('.brands_products a:has-text("Polo")')[22m
+

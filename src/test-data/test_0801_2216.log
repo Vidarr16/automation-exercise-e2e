@@ -1,0 +1,41 @@
+[2026-01-08T14:16:26.508Z] Starting Test: Navigating to Homepage.
+[2026-01-08T14:16:35.714Z] Step 3 & 4: Login process.
+[2026-01-08T14:16:35.716Z] Navigate to Login Page (using goto for robustness)
+[2026-01-08T14:16:43.909Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T14:16:43.971Z] Starting Action: Click Login Button
+[2026-01-08T14:16:43.973Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:16:53.978Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T14:17:03.983Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-qa="login-button"]')[22m
+
+[2026-01-08T14:17:08.648Z] Action Completed: Click Login Button
+[2026-01-08T14:17:08.678Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T14:17:08.680Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:17:09.700Z] Action Completed: Clicking "Cart" navigation
+[2026-01-08T14:17:09.701Z] Clearing cart...
+[2026-01-08T14:17:09.708Z] Removing item. Remaining: 1
+[2026-01-08T14:17:09.712Z] Starting Action: Remove first item
+[2026-01-08T14:17:09.714Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:17:10.188Z] Action Completed: Remove first item
+[2026-01-08T14:17:10.191Z] Cart cleared.
+[2026-01-08T14:17:45.590Z] Step 5: Filter POLO and add "Soft Stretch Jeans".
+[2026-01-08T14:17:45.592Z] Starting Action: Filter by Brand: POLO
+[2026-01-08T14:17:45.595Z] Attempt 1 (Timeout: 60000ms)...
+[2026-01-08T14:17:58.539Z] Action Completed: Filter by Brand: POLO
+[2026-01-08T14:17:58.541Z] Getting details for product: Soft Stretch Jeans
+[2026-01-08T14:17:58.548Z] Recorded Product 1: {"name":"Soft Stretch Jeans","price":"Rs. 799"}
+[2026-01-08T14:17:58.551Z] Starting Action: Add to Cart: Soft Stretch Jeans
+[2026-01-08T14:17:58.552Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:18:14.998Z] Action Completed: Add to Cart: Soft Stretch Jeans
+[2026-01-08T14:18:15.000Z] Starting Action: Click Continue Shopping
+[2026-01-08T14:18:15.001Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:18:15.019Z] Action Completed: Click Continue Shopping
+[2026-01-08T14:18:15.020Z] Step 6: Verify Cart.
+[2026-01-08T14:18:15.021Z] Starting Action: Clicking "Cart" navigation
+[2026-01-08T14:18:15.022Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T14:18:25.027Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T14:18:35.032Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('.shop-menu a[href="/view_cart"]')[22m
+

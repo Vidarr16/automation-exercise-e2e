@@ -1,0 +1,3 @@
+[2026-01-08T13:13:31.476Z] Starting Test: Navigating to Homepage.
+[2026-01-08T13:13:41.598Z] Step 3 & 4: Login process.
+[2026-01-08T13:13:41.600Z] Navigate to Login Page (using goto for robustness)

@@ -1,0 +1,10 @@
+[2026-01-08T12:18:14.112Z] Starting Test: Navigating to Homepage.
+[2026-01-08T12:18:18.543Z] Step 3 & 4: Login process.
+[2026-01-08T12:18:18.545Z] Starting Action: Navigate to Login Page
+[2026-01-08T12:18:18.547Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:18:28.558Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T12:18:38.564Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('a[href="/login"]')[22m
+[2m    - waiting for" https://automationexercise.com/login" navigation to finish...[22m
+

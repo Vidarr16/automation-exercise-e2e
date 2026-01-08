@@ -1,0 +1,19 @@
+[2026-01-08T12:41:12.394Z] Starting Test: Navigating to Homepage.
+[2026-01-08T12:41:17.144Z] Step 3 & 4: Login process.
+[2026-01-08T12:41:17.147Z] Starting Action: Navigate to Login Page
+[2026-01-08T12:41:17.149Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:41:47.231Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T12:41:57.237Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('a[href="/login"]')[22m
+[2m    - waiting for" https://automationexercise.com/login" navigation to finish...[22m
+
+[2026-01-08T12:42:04.806Z] Action Completed: Navigate to Login Page
+[2026-01-08T12:42:04.808Z] Logging in with email: xxyuxdzed@gmail.com
+[2026-01-08T12:42:04.880Z] Starting Action: Click Login Button
+[2026-01-08T12:42:04.882Z] Attempt 1 (Timeout: 30000ms)...
+[2026-01-08T12:42:41.213Z] Attempt 1 failed. Retrying with longer timeout (60000ms)...
+[2026-01-08T12:42:51.218Z] Retry click failed (likely already navigating or processing). Proceeding to wait. Error: TimeoutError: page.click: Timeout 10000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-qa="login-button"]')[22m
+
