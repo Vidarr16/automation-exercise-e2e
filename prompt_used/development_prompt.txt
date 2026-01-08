@@ -1,0 +1,30 @@
+You are an expert Playwright and TypeScript developer.
+
+Your task is to write a complete, robust, and maintainable end-to-end test suite for the website https://automationexercise.com/.
+
+Your **single most important instruction** is to meticulously follow the detailed technical implementation guide provided in the attached file `PROGRAM.md`. You must adhere to every detail in this guide, including:
+- The specified file structure (`src/utils`, `src/models`, `src/selectors`, `src/pages`, `src/tests`).
+- The exact class, method, and interface names.
+- The logic for each method.
+- The implementation of the custom `logger` and `recorder` utilities.
+- The configuration of `playwright.config.ts`, especially the increased timeout.
+
+**Key constraints to follow:**
+1.  **POM:** Implement the Page Object Model exactly as described.
+2.  **Selectors:** Strictly separate selectors into their own dedicated files within `src/selectors/`.
+3.  **TypeScript:** Use strict TypeScript.
+4.  **Slow Website:** The website is slow. Ensure all interactions are robust. Rely on Playwright's auto-waiting capabilities. Do not use hard-coded `waitForTimeout` or sleeps.
+5.  **Logging:** Every significant action must be logged using the custom logger utility.
+
+**Deliverables:**
+Generate all the required files for the project. This includes:
+- `src/utils/logger.ts`
+- `src/utils/recorder.ts`
+- `src/models/product.ts`
+- `src/selectors/*.selectors.ts` (for each page)
+- `src/pages/*.ts` (for each page)
+- `src/tests/e2e-flow.spec.ts`
+
+The final code must be clean, well-structured, and ready to run. Assume Prettier will be used for formatting.
+
+Begin by creating the file structure. Then, implement the files in the logical order outlined in `PROGRAM.md`: start with the utilities and models, then selectors, then page objects, and finally the main test script.

@@ -1,0 +1,572 @@
+Preparing Stage
+The file @README.md is requirement that I get, you are developer that same role me, read it and discuss on how to
+  fulfill the requirements with me.
+
+✦ Hello! I've reviewed the README.md file. It's a well-defined task. We need to create a robust, end-to-end Playwright
+  test suite for the "Automation Exercise" website, following best practices like the Page Object Model (POM), and
+  ensuring the project is clean and maintainable.
+
+  Here’s my proposed plan for how we can tackle this together:
+
+  Phase 1: Project Setup & Scaffolding
+   1. Initialize a package.json and install our core dependencies: Playwright, TypeScript, and Prettier.
+   2. Set up the project structure as suggested in the README.md (/src/pages, /src/selectors, /src/tests, etc.).
+   3. Configure tsconfig.json for strict mode and a .prettierrc for code formatting.
+   4. Update playwright.config.ts to define the test directory, set up the HTML reporter, and configure options for
+      traces and screenshots as required.
+
+  Phase 2: Building the Foundation (POM)
+   1. Define data models for Product and User in the /src/models directory.
+   2. Create dedicated selector files in /src/selectors for each page we'll interact with (e.g., home.selectors.ts,
+      products.selectors.ts, cart.selectors.ts).
+   3. Implement the Page Object classes in /src/pages. Each class will encapsulate the selectors and logic for a
+      specific page (e.g., ProductsPage, CartPage).
+
+  Phase 3: Implementing the Test Flow
+   1. Authentication: We'll create a global setup script (global.setup.ts). This script will run once before all tests
+      to register a new user and save the authentication state (cookies, local storage) to a file. This is the standard
+      Playwright approach for managing credentials and speeding up tests.
+   2. The Main Test: We'll create a single test file (/src/tests/shopping-flow.spec.ts) that uses the saved
+      authentication state to start as a logged-in user.
+   3. Test Steps: Inside this test, we'll implement the entire business scenario step-by-step by calling methods from
+      our Page Objects. We'll add clear assertions with expect at each verification point.
+
+  Phase 4: Finalization
+   1. Run Prettier to ensure the entire codebase is formatted correctly.
+   2. Create the final README.md with instructions on how to install dependencies and run the test suite.
+
+  This approach ensures we meet all the technical requirements, resulting in a test suite that is scalable, readable,
+  and robust.
+
+  How does this plan sound to you? Shall we begin with Phase 1?
+
+> 1.What is Playwright? 2.What is Page Object Model? 3.What is Prettier? What is the core point the the project want to
+  achieve? Or what is the paint point the project try to solve?
+
+✦  1. Playwright: An open-source Node.js library that enables reliable end-to-end testing and automation for modern web
+      applications across all major browsers (Chromium, Firefox, and WebKit).
+   2. Page Object Model (POM): A design pattern used in test automation to create an object repository for UI elements.
+      Each web page in the application is represented as a class, which contains the locators for the UI elements and
+      methods to interact with those elements. This improves test maintainability and reduces code duplication.
+   3. Prettier: An opinionated code formatter. It automatically re-formats code to ensure consistent styling across an
+      entire codebase, reducing bikeshedding during code reviews and making code easier to read and maintain.
+
+  The core point the project wants to achieve:
+  To implement a robust, reliable, and maintainable end-to-end automated test suite for the automationexercise.com
+  website, verifying key user interactions from account registration to product purchase.
+
+  The pain point the project tries to solve:
+  The manual and often error-prone process of repeatedly testing complex user flows on a web application. Automated
+  tests, especially end-to-end tests, help quickly identify regressions, ensure functional correctness across
+  deployments, and provide confidence in the application's stability without human intervention for every test run.
+
+> Can explain more deeper on Playwright, POM, and Prettier? I am not familiar with it.
+
+✦ Of course. Let's take a deeper dive into each of these.
+
+  1. Playwright: The Automation Engine
+
+  Think of Playwright as a remote control for web browsers, but for your code. It's a library developed by Microsoft
+  that gives you the power to write scripts that perform actions in a browser just like a human would: clicking buttons,
+  filling out forms, navigating between pages, and taking screenshots.
+
+  Key Features and Why They Matter:
+
+   * Cross-Browser Consistency: Your test script is written once and can be run against Chromium (the engine for Google
+     Chrome and Microsoft Edge), WebKit (the engine for Apple Safari), and Firefox. This is crucial for ensuring your
+     website works for all users, regardless of their browser choice.
+   * Auto-Waits (This is its superpower): This is the single biggest feature that makes Playwright tests reliable. Older
+     tools often failed because a script would try to click a button that hadn't loaded yet, causing the test to crash.
+     Playwright is smarter. When you write page.getByRole('button', { name: 'Submit' }).click(), Playwright
+     automatically performs a series of checks behind the scenes:
+       1. Is the button in the page's code (the DOM)?
+       2. Is it visible on the screen?
+       3. Is it stable (i.e., not moving or covered by an animation)?
+       4. Is it enabled and ready to receive a click?
+      It only proceeds with the click once all these conditions are met. This eliminates the most common source of
+  "flaky" or unreliable tests.
+   * Powerful Tooling:
+       * Codegen: You can literally open a browser, record your actions, and Playwright will generate the TypeScript
+         code for you. It’s an amazing way to get started.
+       * Trace Viewer: This is a lifesaver for debugging. When a test fails, Playwright can generate a detailed trace
+         file. You can open this file in a special viewer that shows you a full recording of the test, DOM snapshots
+         before and after each action, network requests, and console logs. It’s like a time-traveling debugger for your
+         test run.
+
+  2. Page Object Model (POM): The Architectural Blueprint
+
+  POM isn't a tool; it's a widely-accepted design pattern for structuring your test code. Its primary goal is to make
+  your tests more readable, reusable, and, most importantly, easier to maintain.
+
+  The core principle is the separation of concerns:
+   * Page Objects: These are classes that represent a specific page or a major component of your application (e.g.,
+     LoginPage.ts, ProductsPage.ts, ShoppingCart.ts). A Page Object is responsible for two things:
+       1. Storing the selectors (like button#login or div.product-item) for that page.
+       2. Exposing high-level methods for interacting with that page (e.g., login(username, password) or
+          addProductToCart(productName)).
+   * Test Files: These files contain the actual test logic and assertions. They should read like a user story, not a
+     series of technical browser commands.
+
+  A Simple Analogy:
+
+   * Without POM (The Bad Way):
+
+   1     // in test-case-1.spec.ts
+   2     test('should login successfully', async ({ page }) => {
+   3       await page.locator('input[name="email"]').fill('user@example.com');
+   4       await page.locator('input[name="password"]').fill('password123');
+   5       await page.locator('button#submit-login').click();
+   6       // ... more test steps
+   7     });
+      If the developer changes button#submit-login to button#login-btn, you have to find and fix it in every single test
+  that uses it. This is not scalable.
+
+   * With POM (The Good Way):
+
+    1     // in LoginPage.ts (Page Object)
+    2     export class LoginPage {
+    3       constructor(private page: Page) {}
+    4       private emailInput = this.page.locator('input[name="email"]');
+    5       private passwordInput = this.page.locator('input[name="password"]');
+    6       private submitButton = this.page.locator('button#submit-login'); // Selector defined ONCE
+    7
+    8       async login(email, password) {
+    9         await this.emailInput.fill(email);
+   10         await this.passwordInput.fill(password);
+   11         await this.submitButton.click();
+   12       }
+   13     }
+   14
+   15     // in test-case-1.spec.ts (Test File)
+   16     test('should login successfully', async ({ page }) => {
+   17       const loginPage = new LoginPage(page);
+   18       await loginPage.login('user@example.com', 'password123'); // Reads like a user action
+   19       // ... more test steps
+   20     });
+      Now, if the login button selector changes, you only have to update it in one place: LoginPage.ts. All your tests
+  that use loginPage.login() will work without any changes.
+
+  3. Prettier: The Code Stylist
+
+  Prettier is an "opinionated" code formatter.
+
+   * "Opinionated" means it doesn't give you many choices. It has one predefined style for things like indentation, line
+     length, spacing, and whether to use single or double quotes.
+   * "Code formatter" means its only job is to take your code, parse it, and then reprint it perfectly according to its
+     style rules.
+
+  The pain point it solves is arguments over code style. In a team, developers can waste hours debating trivial
+  formatting issues or re-formatting each other's code, which creates noise in code reviews.
+
+  Prettier eliminates this entirely. The team agrees to use Prettier, and a single command (npx prettier --write .)
+  automatically formats all files in the project. Everyone's code looks the same, regardless of how they originally
+  wrote it. This allows the team to focus on what matters: the logic and functionality of the code.
+
+> Now you are the one who manage the project and pass task to your man, how will you plan it?
+
+✦ Alright, team. Let's get this project organized and executed efficiently.
+
+  Our mission is to build a high-quality, end-to-end automated test suite for the Automation Exercise website. We will
+  adhere strictly to the technical requirements, focusing on creating a solution that is robust, maintainable, and easy
+  to understand.
+
+  I've broken the project down into four distinct phases. We will tackle these one by one. I'll handle the strategy and
+  architecture; you'll be responsible for the implementation of each task.
+
+  Here is the plan:
+
+  ---
+
+  Phase 1: Project Initialization & Foundation (Current Task)
+
+  This phase is about setting up a clean and correct foundation. A solid setup prevents a lot of problems down the line.
+
+   * Task 1.1: Initialize the Project. Create a package.json file and install all our primary development dependencies:
+     Playwright, TypeScript, and Prettier.
+   * Task 1.2: Install Browsers. Run the Playwright command to download the necessary browser binaries.
+   * Task 1.3: Establish Project Structure. Create the complete, empty directory structure as specified in the
+     requirements (/src/tests, /src/pages, /src/selectors, etc.).
+   * Task 1.4: Configure TypeScript & Playwright. Create a tsconfig.json file and enable strict mode. Then, modify the
+     default playwright.config.ts to point its testDir to our new /src/tests directory and set up the HTML reporter.
+   * Task 1.5: Configure Prettier. Create a basic .prettierrc configuration file to ensure our formatting is consistent
+     from the very beginning.
+
+  ---
+
+  Phase 2: POM Scaffolding & Data Models
+
+  With the project set up, we will build the skeleton of our Page Object Model.
+
+   * Task 2.1: Define Data Models. Create the TypeScript interfaces for User, Product, and CartItem in the /src/models
+     directory.
+   * Task 2.2: Define Selectors. Create the selector files within /src/selectors. For each major page (e.g., Auth,
+     Products, Cart, Checkout), we will define and export the necessary locators.
+   * Task 2.3: Create Page Object Shells. Create the Page Object class files in /src/pages. These classes will have a
+     constructor, but the methods for interacting with the page will be left empty for now.
+
+  ---
+
+  Phase 3: Authentication & Test Setup
+
+  This is a critical step to ensure our tests can run efficiently without needing to log in manually every time.
+
+   * Task 3.1: Implement User Registration Logic. We'll create a standalone script or function that can programmatically
+     register a new user using mock data.
+   * Task 3.2: Create the Global Setup. We will implement the Playwright globalSetup file. This script will run once,
+     call our registration logic, log the new user in, and save the browser's authentication state (cookies and local
+     storage) into a JSON file.
+   * Task 3.3: Configure Test Project. We will update playwright.config.ts to use our new global setup and instruct our
+     main test project to use the saved authentication state, ensuring all tests in the spec file start as a logged-in
+     user.
+
+  ---
+
+  Phase 4: E2E Flow Implementation & Finalization
+
+  This is where we bring it all together. We will implement the methods in our Page Objects and write the final test.
+
+   * Task 4.1: Implement Page Logic. Fill in the methods for each Page Object (ProductsPage, CartPage, etc.) to perform
+     the actions defined in the business scenario (e.g., filterByCategory, verifyProductInCart, removeFirstItem).
+   * Task 4.2: Write the Test Spec. In the /src/tests directory, create the single, continuous test flow. The test will
+     call the Page Object methods in sequence to replicate the user journey. Add meaningful assertions with expect to
+     verify each step.
+   * Task 4.3: Project Cleanup. Run Prettier across the entire project to ensure formatting is perfect.
+   * Task 4.4: Write the README. Create the final README.md file, documenting how to install dependencies and run the
+     test suite.
+
+  ---
+
+  Your first assignment is Phase 1.
+
+  Please proceed with Tasks 1.1 through 1.5. Let me know when you've completed the project setup. We will then move to
+  Phase 2.
+
+> /model
+
+
+> Based on my understanding, the script is to do automation on testing the testing on account creattion and some
+  features in the website right? If yes then other than prepare the required packages for the automation program, what I
+  need to do is login to the website to see what components it have to know how to design the program to interaction the
+  the website, am I correct?
+
+✦ Yes, you are absolutely correct on both points.
+
+   1. The Goal: Your summary is perfect. The core task is to automate a real user's journey: creating an account,
+      shopping, and checking out, to ensure that entire flow works correctly.
+   2. Your Next Step: You are thinking exactly like an automation engineer. After preparing the project environment
+      (Phase 1), you cannot write a single line of automation code without first understanding the application you're
+      testing.
+
+  So, your intuition is spot on. Before we can build the Page Objects and define selectors (Phase 2), we must do some
+  manual reconnaissance.
+
+  Think of yourself as a detective. Go to the website, https://automationexercise.com/
+  (https://automationexercise.com/), and walk through the entire process yourself. As you do, take notes and identify
+  the following:
+
+   * Key Pages: What are the distinct pages involved in the flow? (e.g., Home, Login/Signup, All Products, Product
+     Detail, Cart, Checkout, Payment, Order Confirmation).
+   * Critical Elements: On each page, what are the specific input fields, buttons, links, and text elements you need to
+     interact with or verify? For example:
+       * The "Signup / Login" button.
+       * The "New User Signup!" form fields.
+       * The product category links (e.g., "Women > Dress").
+       * The "Add to cart" button on a product.
+       * The "View Cart" button in the confirmation popup.
+       * The "Proceed To Checkout" button.
+       * The payment form fields.
+   * Dynamic Elements & Popups: Are there any modals or popups that appear after an action (e.g., the "Added!" popup
+     after adding an item to the cart)? We need to account for these.
+   * Data for Verification: How are products displayed? What information can we use to verify them (name, price)? What
+     does the cart look like? We'll need this information to write our expect assertions.
+
+  Doing this manual exploration first is not just a good idea, it's a mandatory step. The information you gather will be
+  the direct input for our tasks in Phase 2.
+
+  So, let's proceed. Go ahead and start on Phase 1 (Project Setup). Once you have the folders and packages ready,
+  perform this manual exploration.
+
+  Let me know when the Phase 1 setup is complete, and we'll be ready to start architecting the POM.
+
+> I am now clear on how the website works. Before we start I want to know that is the user account creation is a part in
+  the automation task? Or the task start from login?
+
+✦ Excellent question. That clarification is critical.
+
+  The user account creation is a pre-test setup step, not part of the main, repeated test flow.
+
+  If we look at the README.md requirements, it says:
+  > Pre-test: Navigate to https://automationexercise.com/ and register a new account.
+  >
+  > 1.  Login with the created account.
+
+  This tells us two things:
+   1. A new account must be created programmatically as part of the overall automation.
+   2. The actual test itself begins after the user is created and logged in.
+
+  How we will handle this:
+
+  We will use a feature in Playwright called Global Setup.
+
+   1. We will create a special automation script (e.g., global.setup.ts).
+   2. This script's only job is to run once before all our other tests. It will navigate to the site, create a new user
+      with mock data, and save the logged-in session state (like cookies) to a file.
+   3. Our main test will then be configured to load this session file, so it starts with a browser that is already
+      logged in.
+
+  Why do we do it this way?
+
+   * Efficiency: It's much faster. We create one user once, then run our shopping test. We don't need to create a new
+     user every single time we test the cart functionality.
+   * Focus: It keeps our main test clean and focused on its purpose: verifying the shopping and checkout flow. The test
+     for the shopping cart shouldn't also be responsible for testing the registration form.
+
+  So, to summarize: Yes, we will automate the account creation, but we will do it as a separate, preliminary step that
+  sets the stage for our main test.
+
+  Are you ready to start with Phase 1 now?
+
+> The Playwright is able to scroll the webpage or not?
+
+✦ Yes, absolutely. Playwright handles scrolling in two main ways:
+
+   1. Automatic Scrolling (Most Common): This is one of Playwright's best features. When you tell it to interact with an
+      element (e.g., .click() or .fill()), Playwright first checks if that element is visible on the screen. If it's
+      not, Playwright automatically scrolls the page until the element is in view before it proceeds with the action. In
+      95% of cases, you don't even have to think about scrolling; Playwright does it for you.
+
+   2. Manual Scrolling (For Special Cases): If you need to test a feature that specifically relies on scrolling (like an
+      infinite-scroll feed or lazy-loaded images), you have full control. You can manually command Playwright to scroll
+      using methods like:
+       * page.mouse.wheel(deltaX, deltaY): To simulate a user scrolling their mouse wheel.
+       * element.scrollIntoViewIfNeeded(): To force a specific element into view.
+       * page.evaluate('window.scrollBy(0, 500)'): To run custom JavaScript to scroll by a specific amount.
+
+  In summary: Playwright handles most scrolling automatically, but also gives you the tools for manual control when you
+  need it.
+
+> The browser will have back button the on the same row with links right? The back is not element in the web, Playwright
+  can press the back?
+
+✦ That's a very sharp observation, and you are exactly right. The browser's back button is part of the browser's UI (its
+  "chrome"), not an element on the web page.
+
+  And yes, Playwright can absolutely control it.
+
+  Playwright provides simple, direct commands to simulate a user clicking the browser's navigation buttons:
+
+   * page.goBack(): Simulates a user clicking the back button.
+   * page.goForward(): Simulates a user clicking the forward button.
+
+  These commands are essential for testing real-world user behavior, like navigating away from a page and then
+  returning.
+
+  This is directly relevant to our project. Step 5 of the business scenario is:
+  > 5. Go back to the previous page and verify the filtered results still valid.
+
+  To implement that step, we will use the page.goBack() command. Playwright will then wait for the previous page to load
+  before we proceed with our verification steps.
+
+> What is the proper log file file type? .what?
+
+✦ That's a good question. There isn't one single, official standard, but there are very strong conventions.
+
+  The most common and widely recognized file extension for log files is `.log`.
+
+  For example: application.log, test-run.log, or debug.log.
+
+  Other common choices you might see:
+
+   * `.txt`: This is also very common for simple, plain-text logs because it's universally understood by any operating
+     system and text editor.
+   * `.json`: If the log entries are written in a structured JSON format, this extension is often used. This makes the
+     logs easy to parse for analysis tools.
+
+  For our purposes:
+
+  If we were to create a custom log file, test-suite.log would be a perfectly suitable name.
+
+  However, it's important to note that for this project, our primary "logs" and diagnostic information won't be in a
+  simple .log file. Instead, we'll be relying on:
+   1. Console Output: The immediate feedback you see in your terminal when you run the tests.
+   2. The HTML Report: The rich, interactive report Playwright generates, which is our main deliverable for viewing test
+      results.
+   3. Trace Files: The detailed, step-by-step debug files Playwright creates when a test fails.
+
+  So, while `.log` is the correct conventional answer, we will be using the more advanced reporting tools provided by
+  Playwright.
+
+> Based on the instruction, what is the best and convenient way to run the program? Batch file? Script file? Suggest me.
+
+✦ Excellent question. You're thinking about how to make the project easy to use for yourself and others.
+
+  The best, most convenient, and standard way to run programs in a Node.js/TypeScript project like this is to use npm
+  scripts inside the package.json file.
+
+  A batch file (.bat) is Windows-specific, and a shell script (.sh) is macOS/Linux-specific. npm scripts are
+  cross-platform and work for everyone, regardless of their operating system.
+
+  Here’s how we'll do it:
+
+  Once we create our package.json (in Phase 1), we will add a scripts section to it. It will look something like this:
+
+    1 {
+    2   "name": "playwright-automation-project",
+    3   "version": "1.0.0",
+    4   "description": "",
+    5   "main": "index.js",
+    6   "scripts": {
+    7     "test": "playwright test",
+    8     "test:headed": "playwright test --headed",
+    9     "report": "playwright show-report",
+   10     "format": "prettier --write ."
+   11   },
+   12   "keywords": [],
+   13   "author": "",
+   14   "license": "ISC",
+   15   "devDependencies": {
+   16     "@playwright/test": "^1.40.1",
+   17     "prettier": "^3.1.1",
+   18     "typescript": "^5.3.3"
+   19   }
+   20 }
+
+  Why this is the best approach:
+
+   1. Standard Practice: This is the universal convention for all Node.js projects. Any developer familiar with
+      JavaScript will know to look in package.json to see how to run the project.
+   2. Easy to Use: Once this is set up, running our entire test suite is as simple as typing one command in the
+      terminal:
+   1     npm test
+   3. Platform Independent: npm test works perfectly on Windows, macOS, and Linux.
+   4. No Global Dependencies: It automatically uses the correct version of Playwright that we installed specifically for
+      this project, avoiding conflicts with other versions that might be on your machine.
+
+  So, to answer your question directly: We will use npm scripts. It's the most robust and user-friendly solution.
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ✓  ReadManyFiles Will attempt to read and concatenate files using patterns:                                          │
+│                                                                                                                      │
+│ ### ReadManyFiles Result (Target Dir: `D:\Learning\Jobs\Interview\Mode Fair\workflow`)                               │
+│                                                                                                                      │
+│ Successfully read and concatenated content from **1 file(s)**.                                                       │
+│                                                                                                                      │
+│ **Processed Files:**                                                                                                 │
+│ - `Project/STEPS.md`                                                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+> @Project/STEPS.md I already compose the steps required to do the test automation, you as my professional developer
+  senior, I need your help to write complicated structured 'PROGRAM.md' on how the do the test script in detail with
+  prompt that will attach the 'PROGRAM.md' for LLM to do the project. Write the prompt in 'prompt.txt'.
+
+✦ Of course. As your senior developer, I've taken your detailed STEPS.md and architected a comprehensive technical plan.
+  This plan, PROGRAM.md, breaks down the task into a structured, maintainable, and robust solution using the Page Object
+  Model. It details the creation of utilities, models, page objects, and the final test script.
+
+  I have also created prompt.txt. This file is a carefully crafted directive for an LLM developer. It instructs the LLM
+  to act as a Playwright expert and meticulously follow the PROGRAM.md blueprint to generate the entire project's code.
+
+  Here are the two files you requested.
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ ✓  WriteFile Writing to PROGRAM.md                                                                                   │
+│                                                                                                                      │
+│ ... first 131 lines hidden ...                                                                                       │
+│     products. Use `expect` for assertions.                                                                           │
+│ 131 - `async removeFirstItem(): Promise<void>`: Locates the first item in the cart and clicks its 'X' (remove)       │
+│     button. Waits for the item to disappear.                                                                         │
+│ 132 - `async proceedToCheckout(): Promise<void>`                                                                     │
+│ 133                                                                                                                  │
+│ 134 #### **`CheckoutPage.ts`**                                                                                       │
+│ 135                                                                                                                  │
+│ 136 - `constructor(page: Page)`                                                                                      │
+│ 137 - `async placeOrder(): Promise<void>`                                                                            │
+│ 138 - `async fillPaymentDetails(details: { name; cardNumber; cvc; month; year; }): Promise<void>`                    │
+│ 139 - `async payAndConfirm(): Promise<void>`                                                                         │
+│ 140 - `async continueToHome(): Promise<void>`                                                                        │
+│ 141                                                                                                                  │
+│ 142 ## 5. Main Test Script (`src/tests/e2e-flow.spec.ts`)                                                            │
+│ 143                                                                                                                  │
+│ 144 This file will contain the main test flow, orchestrating the calls to the Page Objects.                          │
+│ 145                                                                                                                  │
+│ 146 - Import `test` and `expect` from `@playwright/test`.                                                            │
+│ 147 - Import all Page Object classes, the logger, and the recorder.                                                  │
+│ 148 - Create a single test block: `test('should complete the full e-commerce flow', async ({ page }) => { ... });`   │
+│ 149 - Instantiate all Page Objects inside the test.                                                                  │
+│ 150 - Follow the `STEPS.md` logic precisely, calling the appropriate Page Object methods.                            │
+│ 151 - Use the `logger.log()` method before each distinct action.                                                     │
+│ 152 - Use the `recorder` to save and retrieve product data.                                                          │
+│ 153 - Use `page.goBack()` for step 7.                                                                                │
+│ 154 - Use `expect` from Playwright for all verifications.                                                            │
+│ 155                                                                                                                  │
+│ 156 ### Example Test Flow Snippet:                                                                                   │
+│ 157                                                                                                                  │
+│ 158 ```typescript                                                                                                    │
+│ 159 // Inside test block                                                                                             │
+│ 160 const authPage = new AuthPage(page);                                                                             │
+│ 161 const productsPage = new ProductsPage(page);                                                                     │
+│ 162 // ... other pages                                                                                               │
+│ 163                                                                                                                  │
+│ 164 // Step 3 & 4: Login                                                                                             │
+│ 165 await logger.log("Navigating to login page.");                                                                   │
+│ 166 await authPage.navigate();                                                                                       │
+│ 167 await logger.log("Attempting to log in.");                                                                       │
+│ 168 await authPage.login('xxyuxdzed@gmail.com', '0xX1yu1XD6');                                                       │
+│ 169 await expect(page).toHaveURL('https://automationexercise.com/');                                                 │
+│ 170                                                                                                                  │
+│ 171 // Step 5: Filter and add first item                                                                             │
+│ 172 await logger.log("Filtering by brand 'POLO'.");                                                                  │
+│ 173 await productsPage.filterByBrand('POLO');                                                                        │
+│ 174 const product1 = await productsPage.getProductDetails('Soft Stretch Jeans');                                     │
+│ 175 await logger.log(`Found product: ${product1.name} with price ${product1.price}.`);                               │
+│ 176 await recorder.writeProducts([product1]);                                                                        │
+│ 177 await logger.log(                                                                                                │
+│                                                                                                                      │
+│ ✓  WriteFile Writing to prompt.txt                                                                                   │
+│                                                                                                                      │
+│  1 You are an expert Playwright and TypeScript developer.                                                            │
+│  2                                                                                                                   │
+│  3 Your task is to write a complete, robust, and maintainable end-to-end test suite for the website                  │
+│    https://automationexercise.com/.                                                                                  │
+│  4                                                                                                                   │
+│  5 Your **single most important instruction** is to meticulously follow the detailed technical implementation guide  │
+│    provided in the attached file `PROGRAM.md`. You must adhere to every detail in this guide, including:             │
+│  6 - The specified file structure (`src/utils`, `src/models`, `src/selectors`, `src/pages`, `src/tests`).            │
+│  7 - The exact class, method, and interface names.                                                                   │
+│  8 - The logic for each method.                                                                                      │
+│  9 - The implementation of the custom `logger` and `recorder` utilities.                                             │
+│ 10 - The configuration of `playwright.config.ts`, especially the increased timeout.                                  │
+│ 11                                                                                                                   │
+│ 12 **Key constraints to follow:**                                                                                    │
+│ 13 1.  **POM:** Implement the Page Object Model exactly as described.                                                │
+│ 14 2.  **Selectors:** Strictly separate selectors into their own dedicated files within `src/selectors/`.            │
+│ 15 3.  **TypeScript:** Use strict TypeScript.                                                                        │
+│ 16 4.  **Slow Website:** The website is slow. Ensure all interactions are robust. Rely on Playwright's auto-waiting  │
+│    capabilities. Do not use hard-coded `waitForTimeout` or sleeps.                                                   │
+│ 17 5.  **Logging:** Every significant action must be logged using the custom logger utility.                         │
+│ 18                                                                                                                   │
+│ 19 **Deliverables:**                                                                                                 │
+│ 20 Generate all the required files for the project. This includes:                                                   │
+│ 21 - `src/utils/logger.ts`                                                                                           │
+│ 22 - `src/utils/recorder.ts`                                                                                         │
+│ 23 - `src/models/product.ts`                                                                                         │
+│ 24 - `src/selectors/*.selectors.ts` (for each page)                                                                  │
+│ 25 - `src/pages/*.ts` (for each page)                                                                                │
+│ 26 - `src/tests/e2e-flow.spec.ts`                                                                                    │
+│ 27                                                                                                                   │
+│ 28 The final code must be clean, well-structured, and ready to run. Assume Prettier will be used for formatting.     │
+│ 29                                                                                                                   │
+│ 30 Begin by creating the file structure. Then, implement the files in the logical order outlined in `PROGRAM.md`:    │
+│    start with the utilities and models, then selectors, then page objects, and finally the main test script.         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+✦ Okay, I have created the two files as you requested.
+
+   1. PROGRAM.md: This is the detailed technical blueprint for the entire project. It outlines the structure, the code
+      for our utilities, the design of our Page Objects, and the flow of the final test script. This is our
+      architectural guide.
+   2. prompt.txt: This file contains a precise set of instructions for an LLM to take PROGRAM.md and generate all the
+      necessary code files.
+
+  You can now use prompt.txt and PROGRAM.md to instruct an LLM to perform the implementation.
+
+
+
+Development Stage

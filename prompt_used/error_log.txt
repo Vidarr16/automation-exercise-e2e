@@ -1,0 +1,1 @@
+This file is to paste error log for Gemini CLI to check the log and debug.
